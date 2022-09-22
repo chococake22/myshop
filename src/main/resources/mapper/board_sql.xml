@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.com.myshop.mapper.BoardMapper">
+    <select id="SELECT_BOARD_LIST" parameterType="Json" resultType="Board">
+        SELECT
+            B.board_idx,
+            B.title,
+            B.content,
+            B.reg_user,
+            B.mod_user,
+            B.blind_yn,
+            B.reg_dt,
+            B.mod_dt,
+            B.type
+        FROM
+            TB_BOARD B
+        ORDER BY
+            B.board_idx DESC
+        LIMIT
+            #{offset}, #{recordSize}
+    </select>
+
+    <select id="COUNT_BOARDS" parameterType="Board" resultType="int">
+        SELECT
+            COUNT(*) as totalCount
+        FROM
+            TB_BOARD B
+    </select>
+
+    <select id="SELECT_BOARD_DETAIL" parameterType="Long" resultType="Board">
+        SELECT
+            B.board_idx,
+            B.title,
+            B.content,
+            B.reg_user,
+            B.mod_user,
+            B.blind_yn,
+            B.reg_dt,
+            B.mod_dt,
+            B.type
+        FROM
+            TB_BOARD B
+        WHERE
+            B.board_idx = #{boardIdx}
+    </select>
+    <insert id="INSERT_BOARD" parameterType="Board" useGeneratedKeys="true" keyProperty="boardIdx">
+        INSERT INTO TB_BOARD
+          (title,
+           content,
+           reg_user,
+           mod_user,
+           blind_yn,
+           reg_dt,
+           mod_dt,
+           type)
+        values
+            (#{title},
+             #{content},
+             'USER1',
+             'USER2',
+             #{blindYn},
+             NOW(),
+             null,
+             #{type})
+        <selectKey keyProperty="boardIdx" resultType="Long" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+</mapper>
