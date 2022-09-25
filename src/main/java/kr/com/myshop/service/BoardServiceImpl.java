@@ -16,8 +16,8 @@ public class BoardServiceImpl implements BoardService {
     private final BoardMapper boardMapper;
 
     @Override
-    public List<Board> SELECT_BOARD_LIST(JSONObject json) {
-        return boardMapper.SELECT_BOARD_LIST(json);
+    public List<Board> SELECT_BOARD_LIST(Board dto) {
+        return boardMapper.SELECT_BOARD_LIST(dto);
     }
 
     @Override

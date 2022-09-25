@@ -11,7 +11,7 @@ import java.util.List;
 @Mapper
 public interface BoardMapper {
 
-    List<Board> SELECT_BOARD_LIST(JSONObject json);
+    List<Board> SELECT_BOARD_LIST(Board dto);
 
     int COUNT_BOARDS(Board dto);
 

@@ -43,8 +43,9 @@ public class Page {
             this.endPage = lastPageNum;
         }
 
-        this.prev = this.startPage > 1;
-        this.next = this.endPage < lastPageNum;
+        this.nowPage = nowPage;
+        this.prev = this.nowPage > 1;
+        this.next = this.nowPage < lastPageNum;
 
         if (nowPage == 0) {
             this.offset = 0;

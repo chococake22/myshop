@@ -10,7 +10,7 @@ public interface BoardService {
 
     // 리스트 조회
     // 검색 기능 포함
-    List<Board> SELECT_BOARD_LIST(JSONObject json);
+    List<Board> SELECT_BOARD_LIST(Board dto);
 
     // 개수
     int COUNT_BOARDS(Board dto);

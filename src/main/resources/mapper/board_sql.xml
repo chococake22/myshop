@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kr.com.myshop.mapper.BoardMapper">
-    <select id="SELECT_BOARD_LIST" parameterType="Json" resultType="Board">
+    <select id="SELECT_BOARD_LIST" parameterType="Board" resultType="Board">
         SELECT
             B.board_idx,
             B.title,

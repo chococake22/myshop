@@ -11,6 +11,7 @@
     <h1>메인입니다</h1>
     <h2>${test}</h2>
 
+    <input type="hidden" name="nowPage" id="nowPage" value="1">
     <a href="/board/list">게시판으로</a>
 </body>
 </html>
